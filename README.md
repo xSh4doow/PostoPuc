@@ -1,27 +1,49 @@
-# ServiçoPlus
+# PostoPUC
 
-Bem-vindo ao ServiçoPlus - A Plataforma de Compra de Pacotes de Serviços!
+Bem-vindo ao repositório do projeto PostoPUC!
 
 ## Descrição
 
-O ServiçoPlus é uma plataforma web versátil e conveniente que permite aos clientes comprar pacotes de serviços personalizados e receber recompensas exclusivas. Com uma ampla variedade de setores e serviços, nossos clientes desfrutam de flexibilidade e economia ao escolherem entre uma gama diversificada de pacotes.
+O PostoPUC é um sistema de gerenciamento de postos de combustíveis desenvolvido como parte de um projeto acadêmico na PUC. Este sistema permite que os clientes gerem cartões de fidelidade, comprem produtos e gerem relatórios com facilidade.
 
-## Recursos Principais
+## Funcionalidades
 
-- **Compra de Pacotes de Serviços**: Explore e adquira pacotes de serviços sob medida para suas necessidades.
-- **Recompensas Atraentes**: Ganhe recompensas sempre que usar nossos serviços, incentivando a fidelidade.
-- **Relatórios Detalhados**: Acompanhe suas compras, uso de serviços e recompensas com relatórios abrangentes.
-- **Integração com Dispositivos Móveis**: Acesse e gerencie sua conta em qualquer lugar com nossa interface responsiva.
+- **Gerar Cartão**: Os clientes podem gerar um novo cartão de fidelidade com um número exclusivo.
 
-## Como Iniciar
+- **Comprar Produtos**: Os clientes podem selecionar produtos disponíveis no posto e adicioná-los ao seu cartão.
 
-1. Clone este repositório.
-2. Instale as dependências necessárias usando `npm install`.
-3. Inicie o servidor com `npm start`.
-4. Acesse o sistema em seu navegador usando o endereço local: `http://localhost:3000`.
+- **Gerar Relatórios**: A funcionalidade de geração de relatórios permite aos administradores acompanhar as vendas e o estoque de produtos.
 
-## Contribuições
+## Pré-requisitos
 
-Aceitamos contribuições da comunidade. Sinta-se à vontade para enviar pull requests para melhorar o ServiçoPlus.
+Certifique-se de ter as seguintes dependências instaladas em sua máquina antes de executar o projeto:
 
-Obrigado por escolher o ServiçoPlus!
+- [Node.js](https://nodejs.org/) e npm (gerenciador de pacotes Node.js)
+
+## Instalação
+
+1. Clone este repositório:
+
+   ```bash
+   git clone https://github.com/xSh4doow/PostoPuc.git
+
+2. Navegue até o diretório clonado:
+
+    ```bash
+    Copy code
+    cd PostoPUC
+
+3. Instale as dependências:
+    ```bash
+    Copy code
+    npm install
+    Uso
+
+4. Para iniciar o servidor e executar o projeto, utilize o seguinte comando:
+    ```bash
+    Copy code
+    npm start
+    Acesse o sistema em http://localhost:8081 no seu navegador.
+
+
+Powered by Node.js
