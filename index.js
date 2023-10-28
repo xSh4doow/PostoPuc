@@ -48,7 +48,7 @@ app.post('/comprar', async (req, res) => {
     }
 });
 
-// Inicia o servidor na porta 8081
+// Inicia o servidor na porta do HEROKU ou 3000
 app.listen(port, function () {
     console.log('Servidor Rodando!');
 });

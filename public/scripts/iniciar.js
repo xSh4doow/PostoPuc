@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // Função para gerar um cartão
 function gerarCartao() {
-    fetch('http://localhost:8081/gerar-cartao')
+    fetch('/gerar-cartao')
         .then(response => response.json())
         .then(data => {
             const resp = parseInt(data.informacao); // Converte para um número inteiro
