@@ -30,18 +30,14 @@ Certifique-se de ter as seguintes dependências instaladas em sua máquina antes
 2. Navegue até o diretório clonado:
 
     ```bash
-    Copy code
     cd PostoPUC
 
 3. Instale as dependências:
     ```bash
-    Copy code
     npm install
-    Uso
 
 4. Para iniciar o servidor e executar o projeto, utilize o seguinte comando:
     ```bash
-    Copy code
     npm start
     Acesse o sistema em http://localhost:8081 no seu navegador.
 
