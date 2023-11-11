@@ -96,7 +96,6 @@ document.addEventListener("DOMContentLoaded", function() {
         imagemParaAparecer3.style.display = "initial";
         criarListaProdutos();
     });
-    /*
     relatoriosBtn.addEventListener("click", function() {
         // Mostra o conteúdo da aba "Relatórios" e oculta as outras
         cartaoDiv.style.display = "none";
@@ -107,7 +106,6 @@ document.addEventListener("DOMContentLoaded", function() {
         relatoriosBtn.style.display = "none";
         imagemParaSumir3.style.display = "none";
     });
-    */
 });
 
 // Função para gerar um cartão

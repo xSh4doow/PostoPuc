@@ -1,0 +1,2 @@
+Como não podemos deixar o usuário entrar no painel de gerência e administrativo, use as urls:
+/colaborador.html e /admin.html para acessar os painéis da fase 2 e 3.

@@ -1,9 +1,10 @@
 const Sequelize = require("sequelize");
-
+const {QueryTypes} = require("sequelize");
 // Loga no Banco de Dados
 const db = new Sequelize("heroku_44f6983cc34c2f8", "b6340d84628fe2", "993dd2ea", {
     host: "us-cdbr-east-06.cleardb.net",
-    dialect: "mysql"
+    dialect: "mysql",
+    logging: false
 });
 
 // Conecta ao banco de dados e trata erros
@@ -66,16 +67,42 @@ const conteudoCompra = db.define('conteudoCompra', {
     createdAt: false
 });
 
+const Recompensas = db.define('Recompensas', {
+    idRecompensa: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+    },
+    nomeRecompensa: {
+        type: Sequelize.STRING(45),
+        allowNull: false,
+    },
+}, {
+    timestamps: false
+});
+
+const TemRecompensa = db.define('TemRecompensa', {
+    usou: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: null,
+    },
+}, {
+    timestamps: false
+});
+
 // Define relacionamentos entre os modelos
 Compras.belongsTo(Cartoes, { foreignKey: 'idCartao' });
 conteudoCompra.belongsTo(Compras, { foreignKey: 'idCompra' });
 conteudoCompra.belongsTo(Produtos, { foreignKey: 'idProduto' });
+TemRecompensa.belongsTo(Cartoes, { foreignKey: 'idCartao' });
+TemRecompensa.belongsTo(Recompensas, { foreignKey: 'idRecompensa' });
 
 // Sincroniza os modelos com o banco de dados - CREATE IF NOT EXISTS
 Cartoes.sync();
 Produtos.sync();
 Compras.sync();
 conteudoCompra.sync();
+TemRecompensa.sync();
+Recompensas.sync();
 
 // Gera um número de seis dígitos aleatório
 function gerarNumeroDeSeisDigitos() {
@@ -170,6 +197,173 @@ async function addCompras(card, itens) {
     }
 }
 
+async function obterProdutosNaoUtilizados(idCartao) {
+    try {
+        // Verifica se o idCartao existe
+        const codigoExiste = await verificarCodigo(idCartao);
 
-// Exporta as funções
-module.exports = { addNoBanco, addCompras };
+        if (codigoExiste === 0) {
+            throw new Error('ID do cartão não encontrado.');
+        }
+
+        // Executa a consulta apenas se o idCartao existir
+        return await db.query(
+            "SELECT c.idCompra, p.nomeProduto AS nomeDoProduto, c.usou, co.idCartao as Cartao\n" +
+            "FROM conteudocompras c\n" +
+            "INNER JOIN produtos p ON c.idProduto = p.idProdutos\n" +
+            "INNER JOIN compras co ON c.idCompra = co.idCompra\n" +
+            "WHERE co.idCartao = ? AND c.usou = 0\n" +
+            "ORDER BY c.idCompra;",
+            {
+                replacements: [idCartao],
+                type: QueryTypes.SELECT
+            }
+        );
+    } catch (error) {
+        console.error('Erro ao obter produtos não utilizados:', error);
+        throw error;
+    }
+}
+
+
+// Nova função para obter todas as compras de um cartão
+async function obterComprasPorCartao(idCartao) {
+    try {
+        const compras = await Compras.findAll({
+            where: {
+                idCartao: idCartao,
+            },
+        });
+
+        return compras;
+    } catch (error) {
+        console.error('Erro ao obter compras por cartão:', error);
+        throw error;
+    }
+}
+
+// Nova função para marcar produtos como usados
+async function marcarProdutosComoUsados(idCartao, produtos) {
+    try {
+        const idProdutos = [];
+
+        // Obtém os IDs dos produtos pelos nomes
+        for (const produtoNome of produtos) {
+            const idProduto = await getIdProdutoPorNome(produtoNome);
+            if (idProduto) {
+                idProdutos.push(idProduto);
+            }
+        }
+
+        // Obtém todas as compras do cartão
+        const compras = await obterComprasPorCartao(idCartao);
+
+        // Atualiza a tabela conteudoCompra marcando os produtos como usados
+        for (const compra of compras) {
+            await conteudoCompra.update(
+                { usou: true },
+                {
+                    where: {
+                        idProduto: idProdutos,
+                        idCompra: compra.idCompra,
+                    },
+                }
+            );
+        }
+
+        return true;
+    } catch (error) {
+        console.error('Erro ao marcar produtos como usados:', error);
+        throw error;
+    }
+}
+
+
+// Nova função para criar uma recompensa
+async function criarRecompensa(idCartao, idRecompensa) {
+    try {
+        await TemRecompensa.create({ idCartao: idCartao, idRecompensa: idRecompensa, usou: 0 });
+    } catch (error) {
+        console.error('Erro ao criar recompensa:', error);
+        throw error;
+    }
+}
+
+// Nova função para verificar recompensas disponíveis para um cartão
+async function verificarRecompensa(idCartao) {
+    try {
+        const temRecompensa = await TemRecompensa.findOne({
+            where: {
+                idCartao: idCartao,
+                usou: 0
+            },
+        });
+
+        return temRecompensa ? 1 : 0;
+    } catch (error) {
+        console.error('Erro ao verificar recompensa:', error);
+        throw error;
+    }
+}
+
+async function obterRecompensasNaoUsadas(idCartao) {
+    try {
+        const recompensas = await TemRecompensa.findAll({
+            where: {
+                idCartao: idCartao,
+                usou: 0,
+            },
+            include: [
+                {
+                    model: Recompensas,
+                    attributes: ['nomeRecompensa'],
+                },
+            ],
+        });
+
+        return recompensas.map(recompensa => recompensa.Recompensa.nomeRecompensa);
+    } catch (error) {
+        console.error('Erro ao obter recompensas não utilizadas:', error);
+        throw error;
+    }
+}
+
+// Função para usar a recompensa
+async function usarRecompensa(idCartao, nomeRecompensa) {
+    try {
+        // Verifica se o idCartao existe
+        const codigoExiste = await verificarCodigo(idCartao);
+
+        if (codigoExiste === 0) {
+            return { success: false, message: 'ID do cartão não encontrado.' };
+        }
+
+        // Obtém o idRecompensa pelo nome
+        const recompensa = await Recompensas.findOne({
+            where: {
+                nomeRecompensa: nomeRecompensa,
+            },
+        });
+
+        if (recompensa) {
+            // Atualiza a recompensa para usada (usou = 1)
+            await TemRecompensa.update({ usou: 1 }, {
+                where: {
+                    idCartao: idCartao,
+                    idRecompensa: recompensa.idRecompensa,
+                },
+            });
+
+            return { success: true, message: 'Recompensa utilizada com sucesso.' };
+        } else {
+            return { success: false, message: 'Recompensa não encontrada.' };
+        }
+    } catch (error) {
+        console.error('Erro ao usar a recompensa:', error);
+        return { success: false, message: 'Erro ao utilizar a recompensa.' };
+    }
+}
+
+// Exporta as    funções
+module.exports = { addNoBanco, addCompras, obterProdutosNaoUtilizados, marcarProdutosComoUsados,
+    criarRecompensa, usarRecompensa, verificarRecompensa, obterRecompensasNaoUsadas };
