@@ -1,43 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="text/css" rel="stylesheet" href="/css/iniciar.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="/css/iniciar.css" />
     <title>PostoPuc Colaborador</title>
     <script type="module" src="/scripts/colaborador.js"></script>
-</head>
-<body>
-<div class="tela-colaborador">
-    <div class="background-2-image">
-        <nav class="home">
-            <h1>Colaborador PostoPuc</h1>
-        </nav>
+  </head>
 
-        <div class="main-container">
-            <div class="servicos">
-                <h1>Serviços</h1>
-                <div class="servico">
-                    <label>Cartão: <input placeholder="Digite o N° do Cartão" type="number" name="cartaoNumero" id="cartaoNumero"></label>
-                    <button id="buscar-btn">Buscar</button>
-                    <div class="realizar-servicos" id="realizarServicos" style="display: none;">
-                        <h1>Realizar Serviços</h1>
-                        <ul id="listaProdutos"> <!-- Adicionei um ID aqui -->
-                            <!-- Os produtos não utilizados serão adicionados dinamicamente aqui -->
-                        </ul>
-                        <button id="realizarBtn">Realizar Serviços</button> <!-- Adicionei este botão -->
-                    </div>
-                    <div class="recompensas" id="recompensas" style="display: none;">
-                        <h1>Recompensas</h1>
-                        <ul id="listaRecompensas"> <!-- Adicionei um ID aqui -->
-                            <!-- As recompensas serão adicionadas dinamicamente aqui -->
-                        </ul>
-                        <button id="usarRecompensaBtn">Usar Recompensa</button> <!-- Adicionei este botão -->
-                    </div>
-                </div>
-            </div>
-        </div>
+  <body>
+    <header class="box">
+      <a href="/"
+        ><img
+          src="https://cdn-icons-png.flaticon.com/256/25/25694.png"
+          class="home"
+      /></a>
+      <h2>Posto Puc</h2>
+    </header>
+
+    <main class="paginaPrestador">
+      <label class="label"
+        >Digite aqui o número do cartão do seu cliente:</label
+      >
+
+      <input type="number" class="input" id="cartaoNumero" />
+      <button class="botao" id="buscar-btn">Verifique</button>
+
+      <section class="secao" id="secao">
+        <p>Serviços</p>
+        <button class="botao-posicao botao" id="realizarBtn">Realizar</button>
+      </section>
+    </main>
+    <div class="secao" id="recompensas" style="display: none; margin-top: 2rem;">
+      <p>Recompensas</p>
+      <section id="listaRecompensas">
+        </section>
     </div>
-</div>
-</body>
+  </body>
 </html>

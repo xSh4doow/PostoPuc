@@ -1,108 +1,5 @@
-/* Reset de estilos */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-    overflow: hidden;
-}
-
-/* Estilização da lista não ordenada (ul) */
-ul {
-    list-style-type: none;
-}
-
-/* Estilo da seção principal */
-.principal {
-    width: 100%;
-    height: 100vh;
-    background-image: linear-gradient(rgba(12,3,51,0.3), rgba(12,3,51,0.3));
-    position: relative;
-    padding: 0 5%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Estilo da barra de navegação */
-nav {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 20px 8%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-/* Estilo do logotipo */
-nav .logo {
-    width: 60px;
-}
-
-/* Estilo da seção secundária */
-.secundaria {
-    text-align: center;
-}
-
-/* Estilo do título principal */
-.secundaria h1 {
-    font-size: 160px;
-    color: #fff;
-    font-weight: 600;
-    transition: 0.5s;
-    padding-bottom: 10px;
-}
-
-.secundaria h1:hover {
-    -webkit-text-stroke: 2px #fff;
-    color: transparent;
-}
-
-/* Estilo dos botões */
-.secundaria button {
-    text-decoration: none;
-    display: inline-block;
-    background: none;
-    font-size: 20px;
-    border: 2px solid #fff;
-    padding: 14px 70px;
-    margin-top: 20px;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: color 0.5s linear;
-    position: relative;
-}
-
-.btn1:hover {
-    color: #fff;
-}
-
-.btn1::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: #f9724a;
-    z-index: -1;
-    transition: transform 0.4s;
-    transform-origin: 0 0;
-    transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
-}
-
-.btn1::before {
-    transform: scaleX(0);
-}
-
-.btn1:hover::before {
-    transform: scaleX(1);
-}
-
-/* Estilo do vídeo de fundo */
-.back-video {
+/* iniciar */
+.back-video{
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -114,123 +11,47 @@ nav .logo {
     z-index: -1;
 }
 
-/* Estilo das seções */
-.background-2-image {
-    min-height: 100vh;
-    background: url('../media/BLURRR.png') no-repeat;
-    background-size: cover;
-    background-position: center;
-}
-
-/* Estilo da barra de navegação no fundo 2 */
-.home {
-    background-color: transparent;
-    color: white;
-    padding: 10px;
-    text-align: center;
-    display: contents;
-    justify-content: space-between;
-    position: relative;
-}
-
-/* Estilo do container 2 */
-.container2 {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    height: calc(100vh - 140px);
-}
-
-/* Estilo das seções (Cartão, Comprar e Relatórios) */
-.cartao, .comprar, .relatorios {
-    flex: 1;
-    margin: 10px;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.2);
-    border: 1px solid #ccc;
-    transition: all 0.8s ease;
-    opacity: 1;
-    transform: scaleY(1);
-}
-
-.cartao .itens, .comprar .itens, .relatorios .itens {
-    display: block;
-    transition: all 0.8s ease;
-    opacity: 1;
-    transform: scaleY(1);
-}
-
-/* Estilo do título no fundo 2 */
-.home h1 {
-    font-size: 50px;
+h1{
+    font-size: 160px;
     color: #fff;
     font-weight: 600;
     transition: 0.5s;
-    padding-bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    top: 20px;
+    padding-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 150px;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
-/* Estilo do botão para ir à página do usuário no fundo 2 */
-.botaoHomePage {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    height: 50px;
-    width: 50px;
-    left: 30px;
-    bottom: 35px;
+h1:hover{
+    -webkit-text-stroke: 2px #fff;
+    color: transparent;
 }
 
-/* Estilo do título no container 2 */
-.container2 h1 {
-    font-size: 50px;
-    color: #fff;
-    margin-bottom: 200px;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    display: flex;
-}
-
-/* Estilo das imagens no container 2 */
-.container2 img {
-    height: 200px;
-    width: 200px;
-    margin-bottom: 100px;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    display: flex;
-    margin-left: 135px;
-    -webkit-animation: mover 2s infinite alternate;
-    animation: mover 2s infinite alternate;
-}
-
-/* Estilo dos botões no container 2 */
-.container2 button {
+.botaoIniciar{
+    align-content: center;
     text-decoration: none;
-    display: flex;
-    background: rgba(255, 255, 255, 0.5);
+    background: none;
     font-size: 20px;
     border: 2px solid #fff;
+    border-radius: 10px;
     padding: 14px 70px;
     margin-top: 20px;
+    margin-left: 560px;
     cursor: pointer;
     text-transform: uppercase;
     transition: color 0.5s linear;
     position: relative;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
-    left: 135px;
 }
 
-.btn2::before {
-    content: " ";
+.botaoIniciar:hover{
+    color: #fff;
+}
+
+.botaoIniciar::before{
+    content: "";
     position: absolute;
     left: 0;
     top: 0;
@@ -238,82 +59,204 @@ nav .logo {
     height: 100%;
     background: #f9724a;
     z-index: -1;
+    transition: transform 0.4s;
     transform-origin: 0 0;
-    transition: transform 0.4s cubic-bezier(0.5, 1.6, 0.4, 0.7);
+    transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
     transform: scaleX(0);
 }
 
-.btn2:hover::before {
-    transform: scaleX(1);
+.botaoIniciar:hover::before{
+    transform: scaleX(1);   
 }
 
-.btn2:hover {
-    color: #fff;
+a{
+    text-decoration: none;
+    color: #61304B; 
 }
 
-/* Estilo da seção "Gerar Cartão" */
-.gerar-cartao {
-    position: relative;
-    align-items: center;
-    justify-content: center;
-    display: inline-block;
-    left: 600px;
-    bottom: 100px;
+/* prestador */
+body{
+    background-image: url(../media/BLURRR.png);
+    background-size: cover;
+    background-position: center;
 }
 
-.gerar-cartao img {
-    width: 400px;
-    height: 400px;
-    margin: 0 0 50px;
-    display: none;
+h2{
+    font-family: 'Poppins', sans-serif;
 }
 
-.gerar-cartao button {
-    margin: 0;
-    align-items: center;
-    justify-content: center;
-    left: 17px;
-    display: none;
+p{
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 100px;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 10px;
 }
 
-/* Estilo da seção "Comprar Produtos" */
-.comprar-produtos {
-    bottom: 100px !important;
-    position: relative;
-    display: none;
-}
-
-.comprar-produtos h2 {
-    align-items: center;
-    justify-content: center !important;
+.box{
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.home{
+    width: 50px;
+}
+
+.icone{
+    width: 60px;
+    align-content: center;
+    margin-bottom: 100px;
+}
+
+.botao{
+    font-family: 'Poppins', sans-serif;
+    padding: 10px 20px;
+    margin-bottom: 30px;
+    font-size: 15px;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    text-decoration: none;
+    background: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: color 0.5s linear;
     position: relative;
-    margin-bottom: 60px;
+}
+
+.botao-posicao{
+    position: absolute;
+    bottom: 10px;
+    right: 45%;
+    
+}
+
+.botao:hover{
     color: #fff;
 }
 
-.li-img {
-    width: 50px !important;
-    height: 50px !important;
-    margin: 2px !important;
-    display: inline-block !important;
+.botao::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #f9724a;
+    z-index: -1;
+    transition: transform 0.4s;
+    transform-origin: 0 0;
+    transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+    transform: scaleX(0);
 }
 
-.comprar-produtos ul {
-    columns: 4;
-    -webkit-columns: 4;
-    -moz-columns: 4;
+.botao:hover::before{
+    transform: scaleX(1);   
 }
 
-.comprar-produtos button {
-    align-items: center !important;
-    justify-content: center !important;
-    display: flex !important;
-    position: relative !important;
-    left: 780px !important;
-    margin-top: 100px;
+a{
+    text-decoration: none;
+    color: #61304B; 
 }
 
-.checkbox-grande {
-    transform: scale(1.5);
+.paginaPrestador{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    align-items: center;
+    padding: 0 40%;
 }
+
+.label{
+    text-wrap: nowrap;
+    font-family: 'Poppins', sans-serif;
+    font-size: 32px;
+    margin-bottom: 30px;
+    margin-top: 130px;
+}
+
+.input{
+    border-radius: 10px;
+    border: 2px solid #fff;
+    text-decoration: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+/*recompensas */
+.secao{
+    display: none;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: start;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    transition: all 0.8s ease;
+    opacity: 1;
+    transform: scaleY(1);
+    width: 90vw;
+    height: 400px;
+    padding: 2rem 3rem 1rem 3rem;
+}
+
+.checkmark{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: white;
+    border-radius: 2px;
+}
+
+.nomeServico .checkmark:after{
+    content: "";
+    position: absolute;
+    display: none;
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.nomeServico input:checked ~ .checkmark:after {
+    display: block;
+}
+
+
+.nomeServico{
+    font-family: 'Poppins', sans-serif;
+    font-size: 25px;
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+.nomeServico input{
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.nomeServico:hover input ~ .checkmark{
+    background-color: aliceblue;
+}
+
+.nomeServico input:checked ~ .checkmark{
+    background-color: #f9724a;
+}
+
