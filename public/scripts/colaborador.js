@@ -33,6 +33,12 @@ async function mostrarListaProdutos(idCartao) {
           // Limpa o conteúdo atual da div
           listaProdutosDiv.innerHTML = "";
 
+          const paragraph = document.createElement("p");
+          paragraph.textContent = "Serviços";
+          paragraph.style.width = "100%"
+          paragraph.style.textAlign = "center"
+          listaProdutosDiv.appendChild(paragraph);
+
           // Cria checkboxes dinâmicos para cada produto
           produtosNaoUtilizados.forEach((produto) => {
             const div = document.createElement("div");
@@ -183,49 +189,48 @@ async function exibirRecompensas(idCartao) {
     );
     const { recompensas } = await recompensasNaoUsadas.json();
 
-    if(recompensas.length !== 0){
-        const listaRecompensasDiv = document.getElementById("listaRecompensas");
-    
-        // Limpa o conteúdo atual da div
-        listaRecompensasDiv.innerHTML = "";
-    
-        // Cria checkboxes dinâmicos para cada recompensa não utilizada
-        recompensas.forEach((nomeRecompensa) => {
-          const div = document.createElement("div");
-    
-          const label = document.createElement("label");
-          label.textContent = nomeRecompensa;
-          label.classList.add("nomeServico");
-    
-          const checkbox = document.createElement("input");
-          checkbox.type = "checkbox";
-          checkbox.value = nomeRecompensa;
-          checkbox.classList.add("checkbox");
-          checkbox.classList.add("produto");
-          checkbox.classList.add("recompensa");
-    
-          const span = document.createElement("span");
-          span.classList.add("checkmark");
-    
-          label.appendChild(checkbox);
-          label.appendChild(span);
-          div.appendChild(label);
-          listaRecompensasDiv.appendChild(div);
-        });
-    
-        const botao = document.createElement("button");
-        botao.type = "button";
-        botao.id = "usarRecompensaBtn";
-        botao.textContent = "Usar Recompensa";
-        botao.classList.add("botao");
-        botao.classList.add("botao-posicao");
-        listaRecompensasDiv.appendChild(botao);
-    
-        recompensaClick(botao);
-    } else {
-        document.getElementById("recompensas").style.display = "none";
-    }
+    if (recompensas.length !== 0) {
+      const listaRecompensasDiv = document.getElementById("listaRecompensas");
 
+      // Limpa o conteúdo atual da div
+      listaRecompensasDiv.innerHTML = "";
+
+      // Cria checkboxes dinâmicos para cada recompensa não utilizada
+      recompensas.forEach((nomeRecompensa) => {
+        const div = document.createElement("div");
+
+        const label = document.createElement("label");
+        label.textContent = nomeRecompensa;
+        label.classList.add("nomeServico");
+
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.value = nomeRecompensa;
+        checkbox.classList.add("checkbox");
+        checkbox.classList.add("produto");
+        checkbox.classList.add("recompensa");
+
+        const span = document.createElement("span");
+        span.classList.add("checkmark");
+
+        label.appendChild(checkbox);
+        label.appendChild(span);
+        div.appendChild(label);
+        listaRecompensasDiv.appendChild(div);
+      });
+
+      const botao = document.createElement("button");
+      botao.type = "button";
+      botao.id = "usarRecompensaBtn";
+      botao.textContent = "Usar Recompensa";
+      botao.classList.add("botao-posicao");
+      botao.classList.add("botao");
+      listaRecompensasDiv.appendChild(botao);
+
+      recompensaClick(botao);
+    } else {
+      document.getElementById("recompensas").style.display = "none";
+    }
   } catch (error) {
     console.error("Erro ao exibir recompensas:", error);
   }
@@ -238,7 +243,7 @@ async function usarRecompensa() {
     const checkboxRecompensaMarcada = document.querySelector(
       'input[type="checkbox"].recompensa:checked'
     );
-    console.log(checkboxRecompensaMarcada)
+    console.log(checkboxRecompensaMarcada);
 
     if (checkboxRecompensaMarcada) {
       // Obtém o valor do idCartao
@@ -277,10 +282,12 @@ async function usarRecompensa() {
 buscarBtn.addEventListener("click", async function () {
   // Chama a função para validar o cartão e exibir produtos não utilizados
   await mostrarListaProdutos(idCartao.value);
-  // Mostra a seção de realizar serviços e recompensas
-  document.getElementById("recompensas").style.display = "block";
+  
   // Exibe as recompensas disponíveis para o cartão
   await exibirRecompensas(idCartao.value);
+  
+  // Mostra a seção de realizar serviços e recompensas
+  document.getElementById("recompensas").style.display = "block";
 });
 
 recompensaBtn.addEventListener("click", async function () {

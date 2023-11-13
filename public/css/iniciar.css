@@ -129,8 +129,8 @@ p{
 .botao-posicao{
     position: absolute;
     bottom: 10px;
-    right: 45%;
-    
+    right: 42%;
+    width: 15vw;
 }
 
 .botao:hover{
@@ -201,8 +201,9 @@ a{
     opacity: 1;
     transform: scaleY(1);
     width: 90vw;
-    height: 400px;
-    padding: 2rem 3rem 1rem 3rem;
+    min-height: 200px;
+    max-height: 400px;
+    padding: 2rem 3rem 1rem 3rem; 
 }
 
 .checkmark{
@@ -229,10 +230,10 @@ a{
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
+
 .nomeServico input:checked ~ .checkmark:after {
     display: block;
 }
-
 
 .nomeServico{
     font-family: 'Poppins', sans-serif;
