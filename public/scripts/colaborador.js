@@ -7,10 +7,13 @@ const recompensaBtn = document.getElementById("usarRecompensaBtn");
 
 function realizarClick(elemento) {
   return elemento.addEventListener("click", async function () {
-    await realizarServico();
+    const numServicos = await realizarServico();
     // Chama a função para verificar e criar recompensas
     await verificarCriarRecompensas(idCartao.value);
-    await exibirRecompensas(idCartao.value);
+
+    if (numServicos >= 3) location.reload();
+    
+    // await exibirRecompensas(idCartao.value);
   });
 }
 function recompensaClick(elemento) {
@@ -125,6 +128,7 @@ async function realizarServico() {
   } else {
     swal("Erro", "Erro ao marcar produtos como usados.", "error");
   }
+  return produtosMarcados.length
 }
 
 // Função para verificar quantos serviços estão sendo realizados e criar recompensas
