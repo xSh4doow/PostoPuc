@@ -165,7 +165,6 @@ a{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 0 auto;
     align-items: center;
     padding: 0 40%;
 }
@@ -190,10 +189,6 @@ a{
 /*recompensas */
 .secao{
     display: none;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: start;
-    align-items: start;
     background-color: rgba(255, 255, 255, 0.2);
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -201,9 +196,17 @@ a{
     opacity: 1;
     transform: scaleY(1);
     width: 90vw;
-    min-height: 200px;
-    max-height: 400px;
+    height: 400px;
     padding: 2rem 3rem 1rem 3rem; 
+}
+
+.lista-servicos {
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: start;
+    width: 100%;
+    height: 80%;
 }
 
 .checkmark{
