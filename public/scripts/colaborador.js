@@ -3,19 +3,20 @@ import swal from "https://cdn.jsdelivr.net/npm/sweetalert@2.1.2/+esm";
 
 const buscarBtn = document.getElementById("buscar-btn");
 const idCartao = document.getElementById("cartaoNumero");
-const recompensaBtn = document.getElementById("usarRecompensaBtn");
 
 function realizarClick(elemento) {
   return elemento.addEventListener("click", async function () {
+    console.log("hello");
     const numServicos = await realizarServico();
     // Chama a função para verificar e criar recompensas
     await verificarCriarRecompensas(idCartao.value);
 
     if (numServicos >= 3) location.reload();
-    
+
     // await exibirRecompensas(idCartao.value);
   });
 }
+
 function recompensaClick(elemento) {
   return elemento.addEventListener("click", async function () {
     await usarRecompensa();
@@ -31,16 +32,11 @@ async function mostrarListaProdutos(idCartao) {
         const produtosNaoUtilizados = data.produtosNaoUtilizados;
 
         if (produtosNaoUtilizados.length > 0) {
-          const listaProdutosDiv = document.getElementById("secao");
+          const listaProdutosDiv = document.getElementById("lista-servicos");
+          listaProdutosDiv.classList.add("lista-servicos");
 
           // Limpa o conteúdo atual da div
           listaProdutosDiv.innerHTML = "";
-
-          const paragraph = document.createElement("p");
-          paragraph.textContent = "Serviços";
-          paragraph.style.width = "100%"
-          paragraph.style.textAlign = "center"
-          listaProdutosDiv.appendChild(paragraph);
 
           // Cria checkboxes dinâmicos para cada produto
           produtosNaoUtilizados.forEach((produto) => {
@@ -97,6 +93,7 @@ async function realizarServico() {
   const checkboxesProdutosMarcadas = document.querySelectorAll(
     'input[type="checkbox"].produto:checked'
   );
+  console.log(checkboxesProdutosMarcadas);
   const quantidadeCompras = checkboxesProdutosMarcadas.length;
 
   // Obtém o valor do idCartao
@@ -128,7 +125,7 @@ async function realizarServico() {
   } else {
     swal("Erro", "Erro ao marcar produtos como usados.", "error");
   }
-  return produtosMarcados.length
+  return produtosMarcados.length;
 }
 
 // Função para verificar quantos serviços estão sendo realizados e criar recompensas
@@ -155,7 +152,7 @@ async function verificarCriarRecompensas(idCartao) {
       const temRecompensaNaoUsada = await fetch(
         `/verificar-recompensa/${idCartao}`
       );
-      const { temRecompensa } = await temRecompensaNaoUsada.json();
+      const { temRecompensa } = await temRecompensaNaoUsada.json(); // {temRecompensa: ... }
 
       if (!temRecompensa) {
         await fetch("/criar-recompensa", {
@@ -286,14 +283,11 @@ async function usarRecompensa() {
 buscarBtn.addEventListener("click", async function () {
   // Chama a função para validar o cartão e exibir produtos não utilizados
   await mostrarListaProdutos(idCartao.value);
-  
+
   // Exibe as recompensas disponíveis para o cartão
   await exibirRecompensas(idCartao.value);
-  
+
   // Mostra a seção de realizar serviços e recompensas
   document.getElementById("recompensas").style.display = "block";
-});
-
-recompensaBtn.addEventListener("click", async function () {
-  await usarRecompensa();
+  document.getElementById("secao").style.display = "block";
 });
