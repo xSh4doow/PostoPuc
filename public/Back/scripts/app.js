@@ -1,13 +1,15 @@
+// Importa as bibliotecas necessárias do Sequelize
 const Sequelize = require("sequelize");
 const {QueryTypes} = require("sequelize");
-// Loga no Banco de Dados
+
+// Cria uma instância do Sequelize para se conectar ao banco de dados MySQL
 const db = new Sequelize("heroku_44f6983cc34c2f8", "b6340d84628fe2", "993dd2ea", {
     host: "us-cdbr-east-06.cleardb.net",
     dialect: "mysql",
     logging: false
 });
 
-// Conecta ao banco de dados e trata erros
+// Autentica a conexão com o banco de dados e trata erros
 db.authenticate()
     .then(() => {
         console.log("Conectado!");
@@ -16,7 +18,7 @@ db.authenticate()
         console.log(erro);
     });
 
-// Define os modelos de dados usando o Sequelize
+// Define modelos de dados usando Sequelize para as tabelas do banco
 const Cartoes = db.define('cartoes', {
     idCartao: {
         type: Sequelize.INTEGER,
@@ -197,6 +199,7 @@ async function addCompras(card, itens) {
     }
 }
 
+// Nova função para obter todas as compras de um cartão
 async function obterProdutosNaoUtilizados(idCartao) {
     try {
         // Verifica se o idCartao existe
@@ -306,6 +309,7 @@ async function verificarRecompensa(idCartao) {
     }
 }
 
+// Função para obter recompensas não usadas por um cartão
 async function obterRecompensasNaoUsadas(idCartao) {
     try {
         const recompensas = await TemRecompensa.findAll({
@@ -364,6 +368,7 @@ async function usarRecompensa(idCartao, nomeRecompensa) {
     }
 }
 
+// Função para obter informações sobre um cartão, incluindo recompensas e serviços
 async function obterInformacoesPorCartao(idCartao) {
     try {
         // Verifica se o idCartao existe
@@ -405,6 +410,7 @@ async function obterInformacoesPorCartao(idCartao) {
     }
 }
 
+// Função para obter informações sobre produtos vendidos
 async function obterInformacoesProdutosVendidos() {
     try {
         const produtosVendidos = await db.query(`
@@ -424,6 +430,7 @@ async function obterInformacoesProdutosVendidos() {
     }
 }
 
+// Função para obter informações sobre recompensas utilizadas
 async function obterInformacoesRecompensasUtilizadas() {
     try {
         const recompensasUtilizadas = await db.query(`
@@ -443,7 +450,7 @@ async function obterInformacoesRecompensasUtilizadas() {
     }
 }
 
-// Exporta as    funções
+// Exporta as funções
 module.exports = { addNoBanco, addCompras, obterProdutosNaoUtilizados, marcarProdutosComoUsados,
     criarRecompensa, usarRecompensa, verificarRecompensa, obterRecompensasNaoUsadas, obterInformacoesPorCartao,
     obterInformacoesRecompensasUtilizadas, obterInformacoesProdutosVendidos};

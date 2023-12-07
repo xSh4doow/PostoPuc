@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Definindo a codificação de caracteres e a escala inicial -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Título da página -->
     <title>Página do Usuário</title>
 
     <!-- Importa o arquivo JavaScript usando módulo -->
@@ -12,21 +15,31 @@
     <link type="text/css" rel="stylesheet" href="/Front/css/iniciar.css">
 </head>
 <body>
+<!-- Container principal da página do usuário com um ID "tela-primaria" -->
 <div class="tela-cliente" id="tela-primaria">
+    <!-- Container com uma imagem de fundo -->
     <div class="background-2-image">
+        <!-- Barra de navegação -->
         <nav class="home">
             <h1>PostoPUC</h1>
+            <!-- Link para a página "usuario.html" envolvendo uma imagem como um botão -->
             <a href="usuario.html"><img class="botaoHomePage" src="/Front/media/botao-de-inicio.png" alt="botaoInicio"></a>
         </nav>
 
+        <!-- Container secundário para o conteúdo -->
         <div class="container2">
             <!-- Sessão Cartão -->
             <div class="cartao">
                 <h1>Cartão</h1>
+                <!-- Imagem do cartão inicialmente oculta -->
                 <img id="hidden1" src="/Front/media/credit-card.png" alt="credit-card">
+                <!-- Botão para exibir informações do cartão -->
                 <button class="btn2" id="cartao-btn">Cartão</button>
+                <!-- Container para gerar um novo cartão -->
                 <div class="gerar-cartao">
+                    <!-- Imagem de gerar cartão inicialmente oculta -->
                     <img id="show1" src="/Front/media/gerar-cartao1.gif" alt="cartao">
+                    <!-- Botão para gerar um novo cartão -->
                     <button id="show2" class="btn2">Gerar Novo Cartão</button>
                 </div>
             </div>
@@ -34,13 +47,18 @@
             <!-- Sessão Comprar Produtos -->
             <div class="comprar">
                 <h1>Comprar Produtos</h1>
+                <!-- Imagem de comprar produtos inicialmente oculta -->
                 <img id="hidden2" src="/Front/media/ComprarImage.png" alt="comprar">
+                <!-- Botão para comprar produtos -->
                 <button class="btn2" id="comprar-btn">Comprar</button>
+                <!-- Container para selecionar produtos -->
                 <div id="show3" class="comprar-produtos">
                     <h2>Selecione seus Produtos</h2>
+                    <!-- Campo para inserir o número do cartão -->
                     <label>Cartão: <input placeholder="Digite o N° do Cartão" type="number" name="" id="cartaoNumero"></label>
-                    <ul id="produtos-list">
-                    </ul>
+                    <!-- Lista de produtos -->
+                    <ul id="produtos-list"></ul>
+                    <!-- Botão para comprar produtos -->
                     <button class="btn2" id="comprar-btn2">Comprar</button>
                 </div>
             </div>
@@ -48,16 +66,22 @@
             <!-- Sessão Relatórios -->
             <div class="relatorios">
                 <h1 class="rela1">Relatórios</h1>
+                <!-- Imagem de relatórios inicialmente oculta -->
                 <img id="hidden3" src="/Front/media/RelatorioImage.png" alt="relatorios">
+                <!-- Botão para gerar relatórios -->
                 <button class="btn2" id="relatorios-btn">Gerar</button>
+                <!-- Container para inserir cartão e exibir relatórios -->
                 <div id="show4" class="relatorio-usuario">
                     <h2>Insira Seu Cartão</h2>
+                    <!-- Imagem de cartão inicialmente oculta -->
                     <img id="hidden4" class="imgcartao2" src="/Front/media/gerar-cartao1.gif" alt="cartao">
-                    <label class="label1" >Cartão: <input placeholder="Digite o N° do Cartão" type="number" name="" class="input1" id="cartaoNumeroRelatorio"></label>
-                    <button id="botaoValidar1" class="button10" >Validar</button>
+                    <!-- Campo para inserir o número do cartão -->
+                    <label class="label1">Cartão: <input placeholder="Digite o N° do Cartão" type="number" name="" class="input1" id="cartaoNumeroRelatorio"></label>
+                    <!-- Botão para validar o cartão -->
+                    <button id="botaoValidar1" class="button10">Validar</button>
                 </div>
-                <!-- Dentro da div "retorno-relatorio" -->
-                <!-- Tabela para Recompensas -->
+
+                <!-- Tabelas para exibir recompensas e serviços -->
                 <table id="tabela-recompensas">
                     <thead>
                     <tr>
@@ -68,7 +92,6 @@
                     <tbody></tbody>
                 </table>
 
-                <!-- Tabela para Serviços -->
                 <table id="tabela-servicos">
                     <thead>
                     <tr>
@@ -79,7 +102,6 @@
                     </thead>
                     <tbody></tbody>
                 </table>
-                </div>
             </div>
         </div>
     </div>
