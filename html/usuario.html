@@ -6,35 +6,35 @@
     <title>Página do Usuário</title>
 
     <!-- Importa o arquivo JavaScript usando módulo -->
-    <script type="module" src="/scripts/iniciar.js"></script>
+    <script type="module" src="/Front/scripts/iniciar.js"></script>
 
     <!-- Importa o arquivo CSS para estilos -->
-    <link type="text/css" rel="stylesheet" href="/css/usuario.css">
+    <link type="text/css" rel="stylesheet" href="/Front/css/iniciar.css">
 </head>
 <body>
 <div class="tela-cliente" id="tela-primaria">
     <div class="background-2-image">
         <nav class="home">
             <h1>PostoPUC</h1>
-            <a href="usuario.html"><img class="botaoHomePage" src="/media/botao-de-inicio.png" alt="botaoInicio"></a>
+            <a href="usuario.html"><img class="botaoHomePage" src="/Front/media/botao-de-inicio.png" alt="botaoInicio"></a>
         </nav>
 
         <div class="container2">
-            <!-- Seção Cartão -->
+            <!-- Sessão Cartão -->
             <div class="cartao">
                 <h1>Cartão</h1>
-                <img id="hidden1" src="/media/credit-card.png" alt="credit-card">
+                <img id="hidden1" src="/Front/media/credit-card.png" alt="credit-card">
                 <button class="btn2" id="cartao-btn">Cartão</button>
                 <div class="gerar-cartao">
-                    <img id="show1" src="/media/gerar-cartao1.gif" alt="cartao">
+                    <img id="show1" src="/Front/media/gerar-cartao1.gif" alt="cartao">
                     <button id="show2" class="btn2">Gerar Novo Cartão</button>
                 </div>
             </div>
 
-            <!-- Seção Comprar Produtos -->
+            <!-- Sessão Comprar Produtos -->
             <div class="comprar">
                 <h1>Comprar Produtos</h1>
-                <img id="hidden2" src="/media/ComprarImage.png" alt="comprar">
+                <img id="hidden2" src="/Front/media/ComprarImage.png" alt="comprar">
                 <button class="btn2" id="comprar-btn">Comprar</button>
                 <div id="show3" class="comprar-produtos">
                     <h2>Selecione seus Produtos</h2>
@@ -45,12 +45,42 @@
                 </div>
             </div>
 
-            <!-- Seção Relatórios -->
+            <!-- Sessão Relatórios -->
             <div class="relatorios">
-                <h1>Relatórios</h1>
-                <img id="hidden3" src="/media/RelatorioImage.png" alt="relatorios">
+                <h1 class="rela1">Relatórios</h1>
+                <img id="hidden3" src="/Front/media/RelatorioImage.png" alt="relatorios">
                 <button class="btn2" id="relatorios-btn">Gerar</button>
-            </div> -->
+                <div id="show4" class="relatorio-usuario">
+                    <h2>Insira Seu Cartão</h2>
+                    <img id="hidden4" class="imgcartao2" src="/Front/media/gerar-cartao1.gif" alt="cartao">
+                    <label class="label1" >Cartão: <input placeholder="Digite o N° do Cartão" type="number" name="" class="input1" id="cartaoNumeroRelatorio"></label>
+                    <button id="botaoValidar1" class="button10" >Validar</button>
+                </div>
+                <!-- Dentro da div "retorno-relatorio" -->
+                <!-- Tabela para Recompensas -->
+                <table id="tabela-recompensas">
+                    <thead>
+                    <tr>
+                        <th>Nome Recompensa</th>
+                        <th>Quantidade</th>
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+
+                <!-- Tabela para Serviços -->
+                <table id="tabela-servicos">
+                    <thead>
+                    <tr>
+                        <th>Nome Serviço</th>
+                        <th>Quantidade</th>
+                        <th>Última Utilização</th>
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>

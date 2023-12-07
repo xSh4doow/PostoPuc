@@ -12,6 +12,7 @@ const relatoriosBtn = document.getElementById("relatorios-btn");
 const btnCartao = document.getElementById("show2");
 const btnComprar = document.getElementById("comprar-btn2");
 
+const botaoValidar = document.getElementById("botaoValidar1");
 const imagemParaSumir1 = document.getElementById("hidden1");
 const imagemParaSumir2 = document.getElementById("hidden2");
 const imagemParaSumir3 = document.getElementById("hidden3");
@@ -19,23 +20,30 @@ const imagemParaSumir3 = document.getElementById("hidden3");
 const imagemParaAparecer1 = document.getElementById("show1");
 const imagemParaAparecer2 = document.getElementById("show2");
 const imagemParaAparecer3 = document.getElementById("show3");
+const imagemParaAparecer4 = document.getElementById("show4");
+const imagemParaAparecer5 = document.getElementById("show5");
+
+
 
 const produtos = [
-    { nome: "Gasolina", imagem: "/media/li-gas.png" },
-    { nome: "Óleo Motor", imagem: "/media/li-oil.png" },
-    { nome: "Óleo Cambio", imagem: "/media/li-oil.png" },
-    { nome: "Aditivos Radiador", imagem: "/media/li-oil.png" },
-    { nome: "Lavagem", imagem: "/media/li-carwashing.png" },
-    { nome: "Calibrar Pneu", imagem: "/media/li-carwashing.png" },
-    { nome: "Polimento", imagem: "/media/li-carwashing.png" },
-    { nome: "Filtro de Ar", imagem: "/media/li-filter.png" },
-    { nome: "Filtro de Óleo", imagem: "/media/li-filter.png" },
-    { nome: "Filtro de Combustível", imagem: "/media/li-filter.png" },
-    { nome: "Baterias", imagem: "/media/li-battery.png" },
-    { nome: "Kit Óleo", imagem: "/media/teste45.png" },
-    { nome: "Kit Filtro", imagem: "/media/teste45.png" },
-    { nome: "Kit Lavagem", imagem: "/media/teste45.png" }
+    { nome: "Gasolina", imagem: "/Front/media/li-gas.png" },
+    { nome: "Óleo Motor", imagem: "/Front/media/li-oil.png" },
+    { nome: "Óleo Cambio", imagem: "/Front/media/li-oil.png" },
+    { nome: "Aditivos Radiador", imagem: "/Front/media/li-oil.png" },
+    { nome: "Lavagem", imagem: "/Front/media/li-carwashing.png" },
+    { nome: "Calibrar Pneu", imagem: "/Front/media/li-carwashing.png" },
+    { nome: "Polimento", imagem: "/Front/media/li-carwashing.png" },
+    { nome: "Filtro de Ar", imagem: "/Front/media/li-filter.png" },
+    { nome: "Filtro de Óleo", imagem: "/Front/media/li-filter.png" },
+    { nome: "Filtro de Combustível", imagem: "/Front/media/li-filter.png" },
+    { nome: "Baterias", imagem: "/Front/media/li-battery.png" },
+    { nome: "Kit Óleo", imagem: "/Front/media/teste45.png" },
+    { nome: "Kit Filtro", imagem: "/Front/media/teste45.png" },
+    { nome: "Kit Lavagem", imagem: "/Front/media/teste45.png" }
 ];
+
+
+
 
 // Função para criar a lista de produtos
 function criarListaProdutos() {
@@ -105,7 +113,23 @@ document.addEventListener("DOMContentLoaded", function() {
         // Esconde o botão "Relatórios" e a imagem associada
         relatoriosBtn.style.display = "none";
         imagemParaSumir3.style.display = "none";
+        imagemParaAparecer4.style.display = "initial";
     });
+    botaoValidar.addEventListener("click", function() {
+        // Mostra o conteúdo da aba "Relatórios" e oculta as outras
+        cartaoDiv.style.display = "none";
+        comprarDiv.style.display = "none";
+        relatoriosDiv.style.display = "block";
+
+        // Esconde o botão "Relatórios" e a imagem associada
+        relatoriosBtn.style.display = "none";
+        imagemParaSumir3.style.display = "none";
+        imagemParaAparecer4.style.display = "none";
+        imagemParaAparecer5.style.display = "initial";
+
+    });
+
+
 });
 
 // Função para gerar um cartão
@@ -169,3 +193,79 @@ btnCartao.addEventListener("click", function () {
 btnComprar.addEventListener("click", function () {
     comprarProdutos();
 });
+
+
+//Função da Parte de Relatório
+// Função para atualizar a tabela de relatórios
+function atualizarRelatorio(numeroCartao) {
+    const tabelaRecompensas = document.querySelector("#tabela-recompensas tbody");
+    const tabelaServicos = document.querySelector("#tabela-servicos tbody");
+
+    // Limpa o corpo das tabelas
+    tabelaRecompensas.innerHTML = '';
+    tabelaServicos.innerHTML = '';
+
+    // Obtém as informações do relatório
+    fetch(`/obter-informacoes-relatorio/${numeroCartao}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const informacoes = data.informacoes;
+
+                // Adiciona os dados da tabela de recompensas
+                informacoes.informacoesRecompensas.forEach(recompensa => {
+                    const linha = document.createElement("tr");
+
+                    const colunaNome = document.createElement("td");
+                    colunaNome.textContent = recompensa.nomeRecompensa;
+
+                    const colunaQuantidade = document.createElement("td");
+                    colunaQuantidade.textContent = recompensa.quantidade;
+
+                    linha.appendChild(colunaNome);
+                    linha.appendChild(colunaQuantidade);
+
+                    tabelaRecompensas.appendChild(linha);
+                });
+
+                // Adiciona os dados da tabela de serviços
+                informacoes.informacoesServicos.forEach(servico => {
+                    const linha = document.createElement("tr");
+
+                    const colunaNome = document.createElement("td");
+                    colunaNome.textContent = servico.nomeServico;
+
+                    const colunaQuantidade = document.createElement("td");
+                    colunaQuantidade.textContent = servico.quantidade;
+
+                    const colunaUltimaUtilizacao = document.createElement("td");
+                    colunaUltimaUtilizacao.textContent = new Date(servico.ultimaUtilizacao).toLocaleString();
+
+                    linha.appendChild(colunaNome);
+                    linha.appendChild(colunaQuantidade);
+                    linha.appendChild(colunaUltimaUtilizacao);
+
+                    tabelaServicos.appendChild(linha);
+                });
+            } else {
+                swal("Erro", "Ocorreu um erro ao obter informações do relatório.", "error");
+            }
+        })
+        .catch(error => {
+            console.error('Erro ao obter informações do relatório:', error);
+            swal("Erro", "Ocorreu um erro ao obter informações do relatório do servidor.", "error");
+        });
+}
+
+// Evento de clique no botão "Gerar" na seção de relatórios
+document.getElementById("botaoValidar1").addEventListener("click", function () {
+    const Card = document.getElementById("cartaoNumeroRelatorio");
+    const valCard = Card.value;
+    console.log(valCard)
+    if (valCard) {
+        atualizarRelatorio(valCard);
+    } else {
+        swal("Erro", "Digite o número do cartão.", "error");
+    }
+});
+//124740

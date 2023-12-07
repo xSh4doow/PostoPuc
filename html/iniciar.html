@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="text/css" rel="stylesheet" href="/css/iniciar.css">
+    <link type="text/css" rel="stylesheet" href="/Front/css/iniciar.css">
     <title>PostoPUC</title>
 </head>
 <body>
-    <video autoplay loop muted plays-inline class="back-video">
-        <source src="/media/SemUpscale.mp4" type="video/mp4">
+<div class="principal" id="tela-inicial">
+    <!-- Vídeo de fundo -->
+    <video autoplay loop muted class="back-video">
+        <source src="/Front/media/SemUpscale.mp4" type="video/mp4">
     </video>
-
-  <h1>Posto Puc</h1>
-  <div> 
-      <button type="button" class="botaoIniciar">
-          <a href="./colaborador.html">Iniciar</a>
-      </button>
-  </div>
-<script type="module" src="/scripts/iniciar.js"></script>
+    <div class="secundaria">
+        <h1>PostoPUC</h1>
+        <!-- Botão para iniciar -->
+        <a href="usuario.html"><button class="btn1" id="botao">Iniciar</button></a>
+    </div>
+</div>
+<!-- Importa o arquivo JavaScript usando módulo -->
+<script type="module" src="/Front/scripts/iniciar.js"></script>
 </body>
 </html>

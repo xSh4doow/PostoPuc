@@ -3,7 +3,8 @@ const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
 const { addNoBanco, addCompras, obterProdutosNaoUtilizados, marcarProdutosComoUsados, usarRecompensa,
-    verificarRecompensa, criarRecompensa, obterRecompensasNaoUsadas } = require('./public/scripts/app.js');
+    verificarRecompensa, criarRecompensa, obterRecompensasNaoUsadas, obterInformacoesPorCartao,
+    obterInformacoesProdutosVendidos, obterInformacoesRecompensasUtilizadas} = require('./public/Back/scripts/app.js');
 
 // Configuração do servidor Express
 app.use(express.static(__dirname + '/public'));
@@ -25,6 +26,12 @@ app.get('/usuario.html', function (req, res) {
 // Rota para a página de colaborador
 app.get('/colaborador.html', function (req, res) {
     const htmlPath = path.join(__dirname, 'html', 'colaborador.html');
+    res.sendFile(htmlPath);
+});
+
+// Rota para a página de admin
+app.get('/servico.html', function (req, res) {
+    const htmlPath = path.join(__dirname, 'html', 'servico.html');
     res.sendFile(htmlPath);
 });
 
@@ -139,6 +146,43 @@ app.get('/recompensas-nao-usadas/:idCartao', async (req, res) => {
         res.json({ recompensas });
     } catch (error) {
         res.json({ success: false, message: 'Erro ao obter recompensas não utilizadas.' });
+    }
+});
+
+
+// Rota para obter informações por cartão para relatório
+app.get('/obter-informacoes-relatorio/:idCartao', async (req, res) => {
+    const idCartao = req.params.idCartao;
+
+    if (idCartao) {
+        try {
+            const informacoes = await obterInformacoesPorCartao(idCartao);
+            res.json({ success: true, informacoes });
+        } catch (error) {
+            res.json({ success: false, message: 'Erro ao obter informações do relatório.' });
+        }
+    } else {
+        res.json({ success: false, message: 'ID do cartão não fornecido.' });
+    }
+});
+
+// Rota para obter informações sobre recompensas utilizadas
+app.get('/informacoes-recompensas', async (req, res) => {
+    try {
+        const informacoesRecompensas = await obterInformacoesRecompensasUtilizadas();
+        res.json({ success: true, informacoesRecompensas });
+    } catch (error) {
+        res.json({ success: false, message: 'Erro ao obter informações de recompensas utilizadas.' });
+    }
+});
+
+// Rota para obter informações sobre produtos vendidos
+app.get('/informacoes-produtos', async (req, res) => {
+    try {
+        const informacoesProdutos = await obterInformacoesProdutosVendidos();
+        res.json({ success: true, informacoesProdutos });
+    } catch (error) {
+        res.json({ success: false, message: 'Erro ao obter informações de produtos vendidos.' });
     }
 });
 
