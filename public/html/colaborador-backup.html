@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Definindo a codificação de caracteres e a escala inicial -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Link para o arquivo de estilo CSS -->
+    <link type="text/css" rel="stylesheet" href="http://localhost:3000/static/Front/css/iniciar.css">
+
+    <!-- Título da página -->
+    <title>PostoPuc Colaborador</title>
+
+    <!-- Script JavaScript assíncrono (tipo module) -->
+    <script type="module" src="http://localhost:3000/static/Front/scripts/colaborador.js"></script>
+</head>
+<body>
+<!-- Container principal da página -->
+<div class="background-2-image">
+
+    <!-- Barra de navegação -->
+    <nav class="home">
+        <h1>Colaborador PostoPuc</h1>
+    </nav>
+
+    <!-- Container de um serviço específico -->
+    <div class="paginaPrestador">
+        <!-- Formulário para inserir o número do cartão -->
+        <label class="label">Digite aqui o número do cartão do seu cliente:</label>
+        <input type="number" class="input" id="cartaoNumero" />
+
+        <!-- Botão para acionar a busca -->
+        <button class="botao" id="buscar-btn">Verifique</button>
+
+        <!-- Container para realizar serviços (inicialmente oculto) -->
+        <div class="secao" id="realizarServicos" style="display: none;">
+            <h1 class="titulo">Serviços</h1>
+
+            <!-- Lista de produtos (serão adicionados dinamicamente) -->
+            <section id="listaProdutos"></section>
+
+            <!-- Botão para realizar serviços -->
+            <button id="realizarBtn" class="botao botao-posicao">Realizar Serviços</button>
+        </div>
+
+        <!-- Container para recompensas (inicialmente oculto) -->
+        <div class="secao" id="recompensas" style="display: none;">
+            <h1 class="titulo">Recompensas</h1>
+
+            <!-- Lista de recompensas (serão adicionadas dinamicamente) -->
+            <section id="listaRecompensas"></section>
+
+            <!-- Botão para usar recompensa -->
+            <button id="realizarBtn" class="botao botao-posicao">Utilizar Recompensas</button>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

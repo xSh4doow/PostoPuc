@@ -288,6 +288,5 @@ buscarBtn.addEventListener("click", async function () {
   await exibirRecompensas(idCartao.value);
 
   // Mostra a seção de realizar serviços e recompensas
-  document.getElementById("recompensas").style.display = "block";
   document.getElementById("secao").style.display = "block";
 });
