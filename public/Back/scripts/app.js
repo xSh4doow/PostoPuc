@@ -1,13 +1,15 @@
+// Importa as bibliotecas necessárias do Sequelize
 const Sequelize = require("sequelize");
 const {QueryTypes} = require("sequelize");
-// Loga no Banco de Dados
+
+// Cria uma instância do Sequelize para se conectar ao banco de dados MySQL
 const db = new Sequelize("heroku_44f6983cc34c2f8", "b6340d84628fe2", "993dd2ea", {
     host: "us-cdbr-east-06.cleardb.net",
     dialect: "mysql",
     logging: false
 });
 
-// Conecta ao banco de dados e trata erros
+// Autentica a conexão com o banco de dados e trata erros
 db.authenticate()
     .then(() => {
         console.log("Conectado!");
@@ -16,7 +18,7 @@ db.authenticate()
         console.log(erro);
     });
 
-// Define os modelos de dados usando o Sequelize
+// Define modelos de dados usando Sequelize para as tabelas do banco
 const Cartoes = db.define('cartoes', {
     idCartao: {
         type: Sequelize.INTEGER,
@@ -197,6 +199,7 @@ async function addCompras(card, itens) {
     }
 }
 
+// Nova função para obter todas as compras de um cartão
 async function obterProdutosNaoUtilizados(idCartao) {
     try {
         // Verifica se o idCartao existe
@@ -306,6 +309,7 @@ async function verificarRecompensa(idCartao) {
     }
 }
 
+// Função para obter recompensas não usadas por um cartão
 async function obterRecompensasNaoUsadas(idCartao) {
     try {
         const recompensas = await TemRecompensa.findAll({
@@ -364,6 +368,89 @@ async function usarRecompensa(idCartao, nomeRecompensa) {
     }
 }
 
-// Exporta as    funções
+// Função para obter informações sobre um cartão, incluindo recompensas e serviços
+async function obterInformacoesPorCartao(idCartao) {
+    try {
+        // Verifica se o idCartao existe
+        const codigoExiste = await verificarCodigo(idCartao);
+
+        if (codigoExiste === 0) {
+            throw new Error('ID do cartão não encontrado.');
+        }
+
+        // Consulta para obter informações sobre recompensas
+        const informacoesRecompensas = await db.query(`
+            SELECT r.nomeRecompensa, COUNT(tr.idRecompensa) AS quantidade
+            FROM Recompensas r
+            LEFT JOIN TemRecompensas tr ON r.idRecompensa = tr.idRecompensa
+            WHERE tr.idCartao = :idCartao
+            GROUP BY r.idRecompensa, tr.usou;
+        `, {
+            replacements: { idCartao },
+            type: QueryTypes.SELECT,
+        });
+
+        // Consulta para obter informações sobre serviços
+        const informacoesServicos = await db.query(`
+            SELECT p.nomeProduto AS nomeServico, COUNT(cc.idProduto) AS quantidade, MAX(cc.updatedAt) AS ultimaUtilizacao
+            FROM Produtos p
+            LEFT JOIN conteudocompras cc ON p.idProdutos = cc.idProduto
+            LEFT JOIN Compras co ON cc.idCompra = co.idCompra
+            WHERE co.idCartao = :idCartao
+            GROUP BY p.idProdutos, cc.usou;
+        `, {
+            replacements: { idCartao },
+            type: QueryTypes.SELECT,
+        });
+
+        return { informacoesRecompensas, informacoesServicos };
+    } catch (error) {
+        console.error('Erro ao obter informações por cartão:', error);
+        throw error;
+    }
+}
+
+// Função para obter informações sobre produtos vendidos
+async function obterInformacoesProdutosVendidos() {
+    try {
+        const produtosVendidos = await db.query(`
+            SELECT p.nomeProduto, COUNT(cc.idProduto) AS quantidadeTotal,
+                SUM(CASE WHEN cc.usou = 1 THEN 1 ELSE 0 END) AS quantidadeUsada
+            FROM Produtos p
+            LEFT JOIN conteudocompras cc ON p.idProdutos = cc.idProduto
+            GROUP BY p.idProdutos;
+        `, {
+            type: QueryTypes.SELECT,
+        });
+
+        return produtosVendidos;
+    } catch (error) {
+        console.error('Erro ao obter informações de produtos vendidos:', error);
+        throw error;
+    }
+}
+
+// Função para obter informações sobre recompensas utilizadas
+async function obterInformacoesRecompensasUtilizadas() {
+    try {
+        const recompensasUtilizadas = await db.query(`
+            SELECT r.nomeRecompensa, COUNT(tr.idRecompensa) AS quantidadeTotal,
+                SUM(tr.usou) AS quantidadeUsada
+            FROM Recompensas r
+            LEFT JOIN TemRecompensas tr ON r.idRecompensa = tr.idRecompensa
+            GROUP BY r.idRecompensa;
+        `, {
+            type: QueryTypes.SELECT,
+        });
+
+        return recompensasUtilizadas;
+    } catch (error) {
+        console.error('Erro ao obter informações de recompensas utilizadas:', error);
+        throw error;
+    }
+}
+
+// Exporta as funções
 module.exports = { addNoBanco, addCompras, obterProdutosNaoUtilizados, marcarProdutosComoUsados,
-    criarRecompensa, usarRecompensa, verificarRecompensa, obterRecompensasNaoUsadas };
+    criarRecompensa, usarRecompensa, verificarRecompensa, obterRecompensasNaoUsadas, obterInformacoesPorCartao,
+    obterInformacoesRecompensasUtilizadas, obterInformacoesProdutosVendidos};

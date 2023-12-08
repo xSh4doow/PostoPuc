@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Definindo a codificação de caracteres e a escala inicial -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Título da página -->
+    <title>servico</title>
+
+    <!-- Link para o arquivo de estilo CSS -->
+    <link type="text/css" rel="stylesheet" href="http://localhost:3000/static/Front/css/iniciar.css">
+
+    <!-- Script JavaScript assíncrono (tipo module) -->
+    <script type="module" src="http://localhost:3000/static/Front/scripts/servico.js"></script>
+</head>
+<body>
+
+<!-- Container principal com uma imagem de fundo -->
+<div class="background-2-image">
+    <!-- Barra de navegação -->
+    <nav class="home">
+        <h1>PostoPUC</h1>
+        <!-- Link para a página "usuario.html" envolvendo uma imagem como um botão -->
+        <a href="usuario.html"><img class="botaoHomePage" src="http://localhost:3000/static/Front/media/botao-de-inicio.png" alt="botaoInicio"></a>
+    </nav>
+
+    <!-- Container principal do conteúdo da página -->
+    <div class="container_servico">
+
+        <!-- Menu com dois rótulos -->
+        <div class="menu">
+            <!-- Rótulo para os dados de venda -->
+            <label class="txt_m dv ctr"><h2> Dados de Venda</h2></label>
+            <!-- Rótulo para os dados sobre recompensa -->
+            <label class="txt_m dr"><h2>Dados Sobre Recompensa</h2></label>
+        </div>
+
+        <!-- Container para o corpo da página -->
+        <div class="container_body">
+            <!-- Div para exibir os dados de venda (inicialmente flexível) -->
+            <div id="tela1" class="Ct d_v" style="display: flex;">
+            </div>
+
+            <!-- Div para exibir os dados sobre recompensa (inicialmente oculta) -->
+            <div id="tela3" class="Ct d_S_R" style="display: none;">
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

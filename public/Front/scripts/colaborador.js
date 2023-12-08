@@ -11,7 +11,7 @@ function realizarClick(elemento) {
     // Chama a função para verificar e criar recompensas
     await verificarCriarRecompensas(idCartao.value);
 
-    if (numServicos >= 3) location.reload();
+    // if (numServicos >= 3) location.reload();
 
     // await exibirRecompensas(idCartao.value);
   });
@@ -191,6 +191,7 @@ async function exibirRecompensas(idCartao) {
     const { recompensas } = await recompensasNaoUsadas.json();
 
     if (recompensas.length !== 0) {
+      document.getElementById("recompensas").style.display = "block";
       const listaRecompensasDiv = document.getElementById("listaRecompensas");
 
       // Limpa o conteúdo atual da div
@@ -288,6 +289,5 @@ buscarBtn.addEventListener("click", async function () {
   await exibirRecompensas(idCartao.value);
 
   // Mostra a seção de realizar serviços e recompensas
-  document.getElementById("recompensas").style.display = "block";
   document.getElementById("secao").style.display = "block";
 });
