@@ -1,319 +1,364 @@
 /* Reset de estilos */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-    overflow: hidden;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 /* Estilização da lista não ordenada (ul) */
 ul {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 /* Estilo da seção principal */
 .principal {
-    width: 100%;
-    height: 100vh;
-    background-image: linear-gradient(rgba(12,3,51,0.3), rgba(12,3,51,0.3));
-    position: relative;
-    padding: 0 5%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(rgba(12, 3, 51, 0.3), rgba(12, 3, 51, 0.3));
+  position: relative;
+  padding: 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Estilo da barra de navegação */
 nav {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 20px 8%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 20px 8%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 /* Estilo do logotipo */
 nav .logo {
-    width: 60px;
+  width: 60px;
 }
 
 /* Estilo da seção secundária */
 .secundaria {
-    text-align: center;
+  text-align: center;
 }
 
 /* Estilo do título principal */
 .secundaria h1 {
-    font-size: 160px;
-    color: #fff;
-    font-weight: 600;
-    transition: 0.5s;
-    padding-bottom: 10px;
+  font-size: 160px;
+  color: #fff;
+  font-weight: 600;
+  transition: 0.5s;
+  padding-bottom: 10px;
 }
 
 .secundaria h1:hover {
-    -webkit-text-stroke: 2px #fff;
-    color: transparent;
+  -webkit-text-stroke: 2px #fff;
+  color: transparent;
 }
 
 /* Estilo dos botões */
 .secundaria button {
-    text-decoration: none;
-    display: inline-block;
-    background: none;
-    font-size: 20px;
-    border: 2px solid #fff;
-    padding: 14px 70px;
-    margin-top: 20px;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: color 0.5s linear;
-    position: relative;
+  text-decoration: none;
+  display: inline-block;
+  background: none;
+  font-size: 20px;
+  border: 2px solid #fff;
+  padding: 14px 70px;
+  margin-top: 20px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: color 0.5s linear;
+  position: relative;
 }
 
 .btn1:hover {
-    color: #fff;
+  color: #fff;
 }
 
 .btn1::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: #f9724a;
-    z-index: -1;
-    transition: transform 0.4s;
-    transform-origin: 0 0;
-    transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #f9724a;
+  z-index: -1;
+  transition: transform 0.4s;
+  transform-origin: 0 0;
+  transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
 }
 
 .btn1::before {
-    transform: scaleX(0);
+  transform: scaleX(0);
 }
 
 .btn1:hover::before {
-    transform: scaleX(1);
+  transform: scaleX(1);
 }
 
 /* Estilo do vídeo de fundo */
 .back-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    min-width: 100%;
-    min-height: 100%;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  min-width: 100%;
+  min-height: 100%;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
 }
 
 /* Estilo das seções */
 .background-2-image {
-    min-height: 100vh;
-    background: url('mediang') no-repeat;
-    background-size: cover;
-    background-position: center;
+  min-height: 100vh;
+  background: url("http://localhost:3000/static/Front/media/BLURRR.png")
+    no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 /* Estilo da barra de navegação no fundo 2 */
 .home {
-    background-color: transparent;
-    color: white;
-    padding: 10px;
-    text-align: center;
-    display: contents;
-    justify-content: space-between;
-    position: relative;
+  background-color: transparent;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  display: contents;
+  justify-content: space-between;
+  position: relative;
 }
 
 /* Estilo do container 2 */
 .container2 {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    height: calc(100vh - 140px);
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
 }
 
 /* Estilo das seções (Cartão, Comprar e Relatórios) */
-.cartao, .comprar, .relatorios {
-    flex: 1;
-    margin: 10px;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.2);
-    border: 1px solid #ccc;
-    transition: all 0.8s ease;
-    opacity: 1;
-    transform: scaleY(1);
-}
-
-.cartao .itens, .comprar .itens, .relatorios .itens {
-    display: block;
-    transition: all 0.8s ease;
-    opacity: 1;
-    transform: scaleY(1);
+.cartao,
+.comprar,
+.relatorios {
+  flex: 1;
+  height: 480px;
+  margin-left: 10px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid #ccc;
+  transition: all 0.8s ease;
+  opacity: 1;
+  transform: scaleY(1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
 }
 
 /* Estilo do título no fundo 2 */
 .home h1 {
-    font-size: 50px;
-    color: #fff;
-    font-weight: 600;
-    transition: 0.5s;
-    padding-bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    top: 20px;
+  font-size: 50px;
+  color: #fff;
+  font-weight: 600;
+  transition: 0.5s;
+  padding-bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: 20px;
 }
 
 /* Estilo do botão para ir à página do usuário no fundo 2 */
 .botaoHomePage {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    height: 50px;
-    width: 50px;
-    left: 30px;
-    bottom: 35px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  height: 50px;
+  width: 50px;
+  left: 30px;
+  bottom: 35px;
 }
 
 /* Estilo do título no container 2 */
-.container2 h1 {
-    font-size: 50px;
-    color: #fff;
-    margin-bottom: 200px;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    display: flex;
+.container2 h1,
+.container2 h2 {
+  color: #fff;
+  text-align: center;
+  font-size: 30px;
+  margin-top: 20px;
 }
 
 /* Estilo das imagens no container 2 */
-.container2 img {
-    height: 200px;
-    width: 200px;
-    margin-bottom: 100px;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    display: flex;
-    margin-left: 135px;
-    -webkit-animation: mover 2s infinite alternate;
-    animation: mover 2s infinite alternate;
+.icon {
+  width: 150px;
+  display: flex;
+  margin-top: 30px;
 }
 
 /* Estilo dos botões no container 2 */
 .container2 button {
-    text-decoration: none;
-    display: flex;
-    background: rgba(255, 255, 255, 0.5);
-    font-size: 20px;
-    border: 2px solid #fff;
-    padding: 14px 70px;
-    margin-top: 20px;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: color 0.5s linear;
-    position: relative;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
-    left: 135px;
+  font-family: "Poppins", sans-serif;
+  padding: 14px 70px;
+  font-size: 15px;
+  border: 2px solid #fff;
+  text-decoration: none;
+  background: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: color 0.5s linear;
+  position: relative;
+  display: flex;
 }
 
 .btn2::before {
-    content: " ";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: #f9724a;
-    z-index: -1;
-    transform-origin: 0 0;
-    transition: transform 0.4s cubic-bezier(0.5, 1.6, 0.4, 0.7);
-    transform: scaleX(0);
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #f9724a;
+  z-index: -1;
+  transform-origin: 0 0;
+  transition: transform 0.4s cubic-bezier(0.5, 1.6, 0.4, 0.7);
+  transform: scaleX(0);
 }
 
 .btn2:hover::before {
-    transform: scaleX(1);
+  transform: scaleX(1);
 }
 
 .btn2:hover {
-    color: #fff;
+  color: #fff;
 }
 
 /* Estilo da seção "Gerar Cartão" */
 .gerar-cartao {
-    position: relative;
-    align-items: center;
-    justify-content: center;
-    display: inline-block;
-    left: 600px;
-    bottom: 100px;
+  position: relative;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.gerarCartaoDiv {
+  margin-top: 4rem;
+  display: none;
+  flex-direction: column;
+  align-items: center;
 }
 
 .gerar-cartao img {
-    width: 400px;
-    height: 400px;
-    margin: 0 0 50px;
-    display: none;
+  width: 200px;
+  display: none;
 }
 
 .gerar-cartao button {
-    margin: 0;
-    align-items: center;
-    justify-content: center;
-    left: 17px;
-    display: none;
+  margin: 0;
+  padding: 14px 40px;
+  display: none;
 }
 
 /* Estilo da seção "Comprar Produtos" */
 .comprar-produtos {
-    bottom: 100px !important;
-    position: relative;
-    display: none;
+  display: none;
+  padding-left: 36px;
 }
 
 .comprar-produtos h2 {
-    align-items: center;
-    justify-content: center !important;
-    display: flex;
-    position: relative;
-    margin-bottom: 60px;
-    color: #fff;
+  align-items: center;
+  justify-content: center !important;
+  display: block;
+  position: relative;
+  margin-bottom: 60px;
+  color: #fff;
 }
 
 .li-img {
-    width: 50px !important;
-    height: 50px !important;
-    margin: 2px !important;
-    display: inline-block !important;
+  width: 50px !important;
+  height: 50px !important;
+  margin: 2px !important;
+  display: inline-block !important;
 }
 
 .comprar-produtos ul {
-    columns: 4;
-    -webkit-columns: 4;
-    -moz-columns: 4;
+  columns: 4;
+  -webkit-columns: 4;
+  -moz-columns: 4;
 }
 
 .comprar-produtos button {
-    align-items: center !important;
-    justify-content: center !important;
-    display: flex !important;
-    position: relative !important;
-    left: 780px !important;
-    margin-top: 100px;
+  margin: 36px auto 0 auto;
 }
 
 .checkbox-grande {
-    transform: scale(1.5);
+  transform: scale(1.5);
+}
+
+.card-title {
+  width: 100%;
+  text-align: center;
+  color: #fff;
+}
+
+/* estilo pagina relatório */
+
+.label {
+  text-wrap: nowrap;
+  font-family: "Poppins", sans-serif;
+  font-size: 32px;
+  margin-bottom: 30px;
+  margin-top: 3rem;
+}
+
+.input {
+  border-radius: 10px;
+  border: 2px solid #fff;
+  text-decoration: none;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.pagRelatorioU {
+  width: 30%;
+  margin-right: auto;
+  margin-left: auto;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.tabelas {
+  width: 70%;
+  margin: 0 auto;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 4rem;
+}
+
+.tabelas table {
+  width: 90%;
+  border: 2px solid #fff;
+  border-spacing: 0px;
+  border-radius: 10px;
+}
+.tabelas table tbody td {
+  text-align: center;
+  padding: 10px 20px;
+  border: 1px solid #fff;
+  /* background-color: #ccc; */
+}
+
+.tabelas table thead th {
+  background-color: #f9724a;
+  color: #fff;
+  padding: 10px;
 }

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Definindo a codificação de caracteres e a escala inicial -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Título da página -->
+    <title>Página do Usuário</title>
+
+    <!-- Importa o arquivo JavaScript usando módulo -->
+    <script
+      type="module"
+      src="http://localhost:3000/static/Front/scripts/iniciar.js"
+    ></script>
+    <!-- Importa o arquivo CSS para estilos -->
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="http://localhost:3000/static/Front/css/usuario.css"
+    />
+  </head>
+  <body>
+    <!-- Container principal da página do usuário com um ID "tela-primaria" -->
+    <div class="tela-cliente" id="tela-primaria">
+      <!-- Container com uma imagem de fundo -->
+      <div class="background-2-image">
+        <!-- Barra de navegação -->
+        <nav class="home">
+          <h1>PostoPUC</h1>
+          <!-- Link para a página "usuario.html" envolvendo uma imagem como um botão -->
+          <a href="usuario"
+            ><img
+              class="botaoHomePage"
+              src="http://localhost:3000/static/Front/media/botao-de-inicio.png"
+              alt="botaoInicio"
+          /></a>
+        </nav>
+
+        <!-- Container secundário para o conteúdo -->
+        <div class="container2">
+          <!-- Sessão Cartão -->
+          <div class="cartao">
+            <h2>Cartão</h2>
+            <!-- Imagem do cartão inicialmente oculta -->
+            <img
+              id="hidden1"
+              src="http://localhost:3000/static/Front/media/credit-card.png"
+              alt="credit-card"
+              class="icon"
+            />
+            <!-- Botão para exibir informações do cartão -->
+            <button class="btn2" id="cartao-btn">Cartão</button>
+            <!-- Container para gerar um novo cartão -->
+            <div class="gerar-cartao">
+              <div class="gerarCartaoDiv">
+                <!-- Imagem de gerar cartão inicialmente oculta -->
+                <img
+                  id="show1"
+                  src="http://localhost:3000/static/Front/media/gerar-cartao1.gif"
+                  alt="cartao"
+                />
+                <!-- Botão para gerar um novo cartão -->
+                <button id="show2" class="btn2">Gerar Novo Cartão</button>
+              </div>
+            </div>
+          </div>
+          <div class="comprar">
+            <h1 id="title">Comprar Produtos</h1>
+            <!-- Imagem do cartão inicialmente oculta -->
+            <img
+              id="hidden2"
+              src="http://localhost:3000/static/Front/media/ComprarImage.png"
+              alt="comprar"
+              class="icon"
+            />
+            <!-- Botão para exibir informações do cartão -->
+            <button class="btn2" id="comprar-btn">Comprar</button>
+            <!-- Container para gerar um novo cartão -->
+            <div id="show3">
+              <div class="comprar-produtos">
+                <h2>Selecione seus Produtos</h2>
+                <!-- Campo para inserir o número do cartão -->
+                <label
+                  >Cartão:
+                  <input
+                    placeholder="Digite o N° do Cartão"
+                    type="number"
+                    name=""
+                    id="cartaoNumero"
+                /></label>
+                <!-- Lista de produtos -->
+                <ul id="produtos-list"></ul>
+                <!-- Botão para comprar produtos -->
+                <button class="btn2" id="comprar-btn2">Comprar</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sessão Relatórios -->
+          <div class="relatorios">
+            <h1>Relatórios</h1>
+            <!-- Imagem de relatórios inicialmente oculta -->
+            <img
+              id="hidden3"
+              src="http://localhost:3000/static/Front/media/RelatorioImage.png"
+              alt="relatorios"
+              class="icon"
+            />
+            <!-- Botão para gerar relatórios -->
+            <button class="btn2" id="relatorios-btn">Relatórios</button>
+            <!-- Container para inserir cartão e exibir relatórios -->
+            <section>
+              <div id="show4" class="pagRelatorioU">
+                <img
+                  id="hidden4"
+                  class="icon"
+                  src="http://localhost:3000/static/Front/media/gerar-cartao1.gif"
+                  alt="cartao"
+                  style="display: none"
+                />
+
+                <label class="label">Insira o número do seu cartão: </label>
+                <input type="number" value="276004" class="input" id="cartaoNumeroRelatorio" />
+
+                <button class="btn2" id="botaoValidar1">Validar</button>
+              </div>
+
+              <div class="tabelas" id="tabelas">
+                <!-- Tabelas para exibir recompensas e serviços -->
+                <h2>Serviços</h2>
+                <table id="tabela-servicos">
+                  <thead>
+                    <tr>
+                      <th style="border-radius: 10px 0 0 0;">Nome Serviço</th>
+                      <th>Quantidade</th>
+                      <th style="border-radius: 0 10px 0 0;">Última Utilização</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+
+
+                <h2>Recompensas</h2>
+                <table id="tabela-recompensas">
+                  <thead>
+                    <tr>
+                      <th style="border-radius: 10px 0 0 0;">Nome Recompensa</th>
+                      <th style="border-radius: 0 10px 0 0;">Quantidade</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

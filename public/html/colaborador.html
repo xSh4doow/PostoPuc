@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="http://localhost:3000/static/Front/css/colaborador.css" />
+    <title>PostoPuc Colaborador</title>
+    <script type="module" src="http://localhost:3000/static/Front/scripts/colaborador.js"></script>
+  </head>
+
+  <body>
+    <header class="box">
+      <a href="/"
+        ><img
+          src="https://cdn-icons-png.flaticon.com/256/25/25694.png"
+          class="home"
+      /></a>
+      <h2>Posto Puc</h2>
+    </header>
+
+    <main class="paginaPrestador">
+      <label class="label">Digite aqui o número do cartão do seu cliente:</label>
+
+      <input type="number" class="input" id="cartaoNumero" />
+      <button class="botao" id="buscar-btn">Verifique</button>
+
+      <section class="secao" id="secao">
+          <p>Serviços</p>
+          <section id="lista-servicos">
+            </section>
+      </section>
+      <div class="secao" id="recompensas" style="display: none; margin-top: 2rem; ">
+        <p>Recompensas</p>
+        <section id="listaRecompensas">
+          </section>
+      </div>
+    </main>
+    
+  </body>
+</html>

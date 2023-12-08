@@ -16,30 +16,31 @@ const botaoValidar = document.getElementById("botaoValidar1");
 const imagemParaSumir1 = document.getElementById("hidden1");
 const imagemParaSumir2 = document.getElementById("hidden2");
 const imagemParaSumir3 = document.getElementById("hidden3");
+const imagemParaSumir4 = document.getElementById("hidden4");
 
 const imagemParaAparecer1 = document.getElementById("show1");
 const imagemParaAparecer2 = document.getElementById("show2");
 const imagemParaAparecer3 = document.getElementById("show3");
 const imagemParaAparecer4 = document.getElementById("show4");
-const imagemParaAparecer5 = document.getElementById("show5");
+const tabelas = document.getElementById("tabelas");
 
 
 
 const produtos = [
-    { nome: "Gasolina", imagem: "/Front/media/li-gas.png" },
-    { nome: "Óleo Motor", imagem: "/Front/media/li-oil.png" },
-    { nome: "Óleo Cambio", imagem: "/Front/media/li-oil.png" },
-    { nome: "Aditivos Radiador", imagem: "/Front/media/li-oil.png" },
-    { nome: "Lavagem", imagem: "/Front/media/li-carwashing.png" },
-    { nome: "Calibrar Pneu", imagem: "/Front/media/li-carwashing.png" },
-    { nome: "Polimento", imagem: "/Front/media/li-carwashing.png" },
-    { nome: "Filtro de Ar", imagem: "/Front/media/li-filter.png" },
-    { nome: "Filtro de Óleo", imagem: "/Front/media/li-filter.png" },
-    { nome: "Filtro de Combustível", imagem: "/Front/media/li-filter.png" },
-    { nome: "Baterias", imagem: "/Front/media/li-battery.png" },
-    { nome: "Kit Óleo", imagem: "/Front/media/teste45.png" },
-    { nome: "Kit Filtro", imagem: "/Front/media/teste45.png" },
-    { nome: "Kit Lavagem", imagem: "/Front/media/teste45.png" }
+    { nome: "Gasolina", imagem: "http://localhost:3000/static/Front/media/li-gas.png" },
+    { nome: "Óleo Motor", imagem: "http://localhost:3000/static/Front/media/li-oil.png" },
+    { nome: "Óleo Cambio", imagem: "http://localhost:3000/static/Front/media/li-oil.png" },
+    { nome: "Aditivos Radiador", imagem: "http://localhost:3000/static/Front/media/li-oil.png" },
+    { nome: "Lavagem", imagem: "http://localhost:3000/static/Front/media/li-carwashing.png" },
+    { nome: "Calibrar Pneu", imagem: "http://localhost:3000/static/Front/media/li-carwashing.png" },
+    { nome: "Polimento", imagem: "http://localhost:3000/static/Front/media/li-carwashing.png" },
+    { nome: "Filtro de Ar", imagem: "http://localhost:3000/static/Front/media/li-filter.png" },
+    { nome: "Filtro de Óleo", imagem: "http://localhost:3000/static/Front/media/li-filter.png" },
+    { nome: "Filtro de Combustível", imagem: "http://localhost:3000/static/Front/media/li-filter.png" },
+    { nome: "Baterias", imagem: "http://localhost:3000/static/Front/media/li-battery.png" },
+    { nome: "Kit Óleo", imagem: "http://localhost:3000/static/Front/media/teste45.png" },
+    { nome: "Kit Filtro", imagem: "http://localhost:3000/static/Front/media/teste45.png" },
+    { nome: "Kit Lavagem", imagem: "http://localhost:3000/static/Front/media/teste45.png" }
 ];
 
 
@@ -80,7 +81,12 @@ document.addEventListener("DOMContentLoaded", function() {
         cartaoDiv.style.display = "block";
         comprarDiv.style.display = "none";
         relatoriosDiv.style.display = "none";
+        
+        const h2 = cartaoDiv.querySelector("h2")
+        h2.classList.add("card-title")
 
+        const gerarCartaoDiv = document.querySelector(".gerarCartaoDiv");
+        gerarCartaoDiv.style.display = "flex"
         // Esconde o botão "Cartão" e a imagem associada
         cartaoBtn.style.display = "none";
         imagemParaSumir1.style.display = "none";
@@ -96,15 +102,21 @@ document.addEventListener("DOMContentLoaded", function() {
         comprarDiv.style.display = "block";
         relatoriosDiv.style.display = "none";
 
+        
+        const comprarProdutos = document.querySelector(".comprar-produtos");
+        comprarProdutos.style.display = "block"
+        
         // Esconde o botão "Comprar" e a imagem associada
         comprarBtn.style.display = "none";
         imagemParaSumir2.style.display = "none";
+        document.getElementById("title").style.display = "none"
 
         // Mostra a imagem associada à aba "Comprar" e cria a lista de produtos
         imagemParaAparecer3.style.display = "initial";
         criarListaProdutos();
     });
     relatoriosBtn.addEventListener("click", function() {
+
         // Mostra o conteúdo da aba "Relatórios" e oculta as outras
         cartaoDiv.style.display = "none";
         comprarDiv.style.display = "none";
@@ -113,23 +125,22 @@ document.addEventListener("DOMContentLoaded", function() {
         // Esconde o botão "Relatórios" e a imagem associada
         relatoriosBtn.style.display = "none";
         imagemParaSumir3.style.display = "none";
-        imagemParaAparecer4.style.display = "initial";
+        imagemParaSumir4.style.display = "block";
+        imagemParaAparecer4.style.display = "flex";
     });
     botaoValidar.addEventListener("click", function() {
         // Mostra o conteúdo da aba "Relatórios" e oculta as outras
         cartaoDiv.style.display = "none";
         comprarDiv.style.display = "none";
         relatoriosDiv.style.display = "block";
+        relatoriosDiv.style.height = "auto";
 
         // Esconde o botão "Relatórios" e a imagem associada
         relatoriosBtn.style.display = "none";
         imagemParaSumir3.style.display = "none";
         imagemParaAparecer4.style.display = "none";
-        imagemParaAparecer5.style.display = "initial";
-
+        tabelas.style.display = "flex"
     });
-
-
 });
 
 // Função para gerar um cartão
@@ -268,4 +279,3 @@ document.getElementById("botaoValidar1").addEventListener("click", function () {
         swal("Erro", "Digite o número do cartão.", "error");
     }
 });
-//124740

@@ -4,7 +4,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 /* Estilização da lista não ordenada (ul) */
@@ -117,7 +117,7 @@ nav .logo {
 /* Estilo das seções */
 .background-2-image {
     min-height: 100vh;
-    background: url('/Front/media/BLURRR.png') no-repeat;
+    background: url('http://localhost:3000/static/Front/media/BLURRR.png') no-repeat;
     background-size: cover;
     background-position: center;
 }
@@ -137,28 +137,9 @@ nav .logo {
 .container2 {
     display: flex;
     justify-content: space-between;
-    padding: 20px;
-    height: calc(100vh - 140px);
 }
 
-/* Estilo das seções (Cartão, Comprar e Relatórios) */
-.cartao, .comprar, .relatorios {
-    flex: 1;
-    margin: 10px;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.2);
-    border: 1px solid #ccc;
-    transition: all 0.8s ease;
-    opacity: 1;
-    transform: scaleY(1);
-}
 
-.cartao .itens, .comprar .itens, .relatorios .itens {
-    display: block;
-    transition: all 0.8s ease;
-    opacity: 1;
-    transform: scaleY(1);
-}
 
 /* Estilo do título no fundo 2 */
 .home h1 {
@@ -185,51 +166,6 @@ nav .logo {
     bottom: 35px;
 }
 
-/* Estilo do título no container 2 */
-.container2 h1 {
-    font-size: 50px;
-    color: #fff;
-    margin-bottom: 200px;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    display: flex;
-}
-
-
-/* Estilo das imagens no container 2 */
-.container2 img {
-    height: 200px;
-    width: 200px;
-    margin-bottom: 100px;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    display: flex;
-    margin-left: 135px;
-    -webkit-animation: mover 2s infinite alternate;
-    animation: mover 2s infinite alternate;
-}
-
-/* Estilo dos botões no container 2 */
-.container2 button {
-    text-decoration: none;
-    display: flex;
-    background: rgba(255, 255, 255, 0.5);
-    font-size: 20px;
-    border: 2px solid #fff;
-    padding: 14px 70px;
-    margin-top: 20px;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: color 0.5s linear;
-    position: relative;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
-    left: 135px;
-}
-
 .btn2::before {
     content: " ";
     position: absolute;
@@ -252,67 +188,11 @@ nav .logo {
     color: #fff;
 }
 
-/* Estilo da seção "Gerar Cartão" */
-.gerar-cartao {
-    position: relative;
-    align-items: center;
-    justify-content: center;
-    display: inline-block;
-    left: 600px;
-    bottom: 100px;
-}
-
-.gerar-cartao img {
-    width: 400px;
-    height: 400px;
-    margin: 0 0 50px;
-    display: none;
-}
-
-.gerar-cartao button {
-    margin: 0;
-    align-items: center;
-    justify-content: center;
-    left: 17px;
-    display: none;
-}
-
-/* Estilo da seção "Comprar Produtos" */
-.comprar-produtos {
-    bottom: 100px !important;
-    position: relative;
-    display: none;
-}
-
-.comprar-produtos h2 {
-    align-items: center;
-    justify-content: center !important;
-    display: flex;
-    position: relative;
-    margin-bottom: 60px;
-    color: #fff;
-}
-
 .li-img {
     width: 50px !important;
     height: 50px !important;
     margin: 2px !important;
     display: inline-block !important;
-}
-
-.comprar-produtos ul {
-    columns: 4;
-    -webkit-columns: 4;
-    -moz-columns: 4;
-}
-
-.comprar-produtos button {
-    align-items: center !important;
-    justify-content: center !important;
-    display: flex !important;
-    position: relative !important;
-    left: 780px !important;
-    margin-top: 100px;
 }
 
 .checkbox-grande {
@@ -430,113 +310,6 @@ nav .logo {
 
 
 
-/*Parte Relatório Usuário*/
-
-#show4{
-    display: none;
-}
-
-.imgcartao2 {
-    height: 200px !important;
-    width: 200px !important;
-    margin-bottom: 10px !important;
-    justify-content: center !important;
-    align-items: center !important;
-    position: relative !important;
-    display: flex !important;
-    margin-left: 690px !important;
-    -webkit-animation: mover 2s infinite alternate !important;
-    animation: mover 2s infinite alternate !important;
-}
-
-.relatorios h2{
-    align-items: center;
-    justify-content: center !important;
-    display: flex;
-    position: relative;
-    margin-bottom: 60px;
-    color: #fff;
-}
-
-.button10{
-    text-decoration: none;
-    display: inline-block;
-    background: none;
-    font-size: 20px;
-    border: 1px solid #fff;
-    padding: 14px 70px;
-    margin-top: 80px !important;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: color 0.5s linear;
-    position: relative;
-    z-index: 1;
-    top: 0px;
-    left: 690px !important;
-    color:#fff
-
-}
-
-.button10:hover{
-    color: #fff !important;
-    
-}
-
-.button10::before{
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: black;
-    z-index: -1;
-    transition: transform 0.4s;
-    transform-origin: 0 0;
-    transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
-    
-}
-
-.button10::before{
-    transform: scaleX(0);
-    
-}
-.button10:hover::before{
-    transform: scaleX(1);
-    
-}
-
-/*Label*/
-
-.label1{
-    color: #fff;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    display: flex;
-    margin-top: 10px;
-}
-
-.input1::placeholder{
-    color: black;
-}
-
-.input1[type=number]{
-    padding: 10px;
-    border: 1px solid #fff;
-    border-radius: 4px;
-    font-weight: bold;
-    text-align: center;
-    margin-left: 4px;
-}
-
-.input1[type=number]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-}
-
-#show5{
-    display: none;
-}
 
 
 /*Parte de Retorno do Relatório*/
@@ -592,3 +365,162 @@ nav .logo {
 .hidden {
     display: none;
 }
+
+
+/* COLABORADOR */
+
+
+.botao{
+    font-family: 'Poppins', sans-serif;
+    padding: 10px 20px;
+    margin-bottom: 30px;
+    font-size: 15px;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    text-decoration: none;
+    background: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: color 0.5s linear;
+    position: relative;
+}
+
+.botao-posicao{
+    position: absolute;
+    bottom: 10px;
+    right: 42%;
+    width: 15vw;
+}
+
+.botao:hover{
+    color: #fff;
+}
+
+.botao::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #f9724a;
+    z-index: -1;
+    transition: transform 0.4s;
+    transform-origin: 0 0;
+    transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+    transform: scaleX(0);
+}
+
+.botao:hover::before{
+    transform: scaleX(1);   
+}
+
+.paginaPrestador{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 40%;
+}
+
+.label{
+    text-wrap: nowrap;
+    font-family: 'Poppins', sans-serif;
+    font-size: 32px;
+    margin-bottom: 30px;
+    margin-top: 130px;
+}
+
+.input{
+    border-radius: 10px;
+    border: 2px solid #fff;
+    text-decoration: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.titulo{
+    text-align: center;
+    font-family:'Poppins', sans-serif;
+    margin-bottom: 10px;
+}
+
+.secao{
+    display: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    transition: all 0.8s ease;
+    opacity: 1;
+    transform: scaleY(1);
+    width: 90vw;
+    height: 400px;
+    padding: 2rem 3rem 1rem 3rem; 
+    margin-bottom: 10px;
+}
+
+.listaProdutos {
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: start;
+    width: 100%;
+    height: 70%;
+}
+
+.checkmark{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: white;
+    border-radius: 2px;
+}
+
+.nomeServico .checkmark:after{
+    content: "";
+    position: absolute;
+    display: none;
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.nomeServico input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.nomeServico{
+    font-family: 'Poppins', sans-serif;
+    font-size: 25px;
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+.nomeServico input{
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.nomeServico:hover input ~ .checkmark{
+    background-color: aliceblue;
+}
+
+.nomeServico input:checked ~ .checkmark{
+    background-color: #f9724a;
+}
+

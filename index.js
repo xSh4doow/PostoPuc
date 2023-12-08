@@ -7,25 +7,31 @@ const { addNoBanco, addCompras, obterProdutosNaoUtilizados, marcarProdutosComoUs
     obterInformacoesProdutosVendidos, obterInformacoesRecompensasUtilizadas} = require('./public/Back/scripts/app.js');
 
 // Configuração do servidor Express
-app.use(express.static(__dirname + '/public'));
+// app.use(express.static(path.join(__dirname + "/public")));
 app.use(bodyParser.json());
-const port = process.env.PORT || 3000;
-
+const port = process.env.PORT || 3000
+app.use('/static', express.static(path.join(__dirname + "/public")))
 // Rota para a página inicial
 app.get('/', function (req, res) {
-    const htmlPath = path.join(__dirname, 'html', 'iniciar.html');
+    const htmlPath = path.join(__dirname, 'public', 'html', 'iniciar.html');
     res.sendFile(htmlPath);
 });
 
 // Rota para a página de usuário
-app.get('/usuario.html', function (req, res) {
-    const htmlPath = path.join(__dirname, 'html', 'usuario.html');
+app.get('/usuario', function (req, res) {
+    const htmlPath = path.join(__dirname, 'public', 'html', 'usuario.html');
     res.sendFile(htmlPath);
 });
 
 // Rota para a página de colaborador
-app.get('/colaborador.html', function (req, res) {
-    const htmlPath = path.join(__dirname, 'html', 'colaborador.html');
+app.get('/colaborador', function (req, res) {
+    const htmlPath = path.join(__dirname, 'public', 'html', 'colaborador.html');
+    res.sendFile(htmlPath);
+});
+
+// Rota para a página de admin
+app.get('/servico', function (req, res) {
+    const htmlPath = path.join(__dirname, 'public', 'html', 'servico.html');
     res.sendFile(htmlPath);
 });
 
