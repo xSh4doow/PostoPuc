@@ -261,9 +261,7 @@ nav .logo {
 /* table*/
 
 .tabs{
-    width: 70vw;
-    height: 45%;
-
+    height: 25%;
     display: flex;
     justify-content: space-around;
     align-items: flex-start;

@@ -39,7 +39,7 @@ async function manipularJSONS() {
 
         // Mapeia e adapta os dados para o formato desejado
         const manipulado = data.informacoesProdutos.map(servico => ({
-            tdHead: 'SERVIÇO',
+            tdHead: '',
             tps: 'Serviço',
             content: [
                 {
@@ -101,8 +101,8 @@ function creatTabel(db, telaTb) {
         let tdElement3 = document.createElement('td');
 
         tdElement1.innerHTML = item.tps;
-        tdElement2.innerHTML = 'Quantidade Vendida';
-        tdElement3.innerHTML = 'Quantidade Não Utilizada';
+        tdElement2.innerHTML = '/Quantidade Vendida';
+        tdElement3.innerHTML = '/Quantidade Não Utilizada';
         tr.appendChild(tdElement1);
         tr.appendChild(tdElement2);
         tr.appendChild(tdElement3);
